@@ -1,0 +1,174 @@
+{
+  "id": "sigf/gta5-valorant-takeover",
+  "version": "1.0.0",
+  "name": "Valorant Takeover",
+  "tagline": "Bring Valorant into the game in the most visible and funny way. The change shows in the first 30 seconds of play.",
+  "kind": "mashup",
+  "games": [
+    {
+      "game": "gta5",
+      "role": "host",
+      "engine": "GTA V Legacy + FiveM (local FXServer, CfxLua 5.4 resource, NUI HTML overlay, streamed .ydr props)",
+      "apps": {
+        "steam": "271590"
+      }
+    },
+    {
+      "game": "valorant",
+      "role": "guest",
+      "label": "Valorant",
+      "canonical": false
+    }
+  ],
+  "requires": [
+    {
+      "id": "fivem"
+    }
+  ],
+  "install": [
+    {
+      "game": "gta5",
+      "strategy": "profile",
+      "files": [
+        {
+          "src": "gta5-valorant-takeover.zip",
+          "dst": "{fivem}/resources/sigf_valorant_takeover",
+          "unpack": true,
+          "contents": [
+            {
+              "path": "client.lua",
+              "sha256": "2e9398584745035e1a72b3304e0589b9a90fd6d567556cf8971dd7eb6f4036f5"
+            },
+            {
+              "path": "demo.lua",
+              "sha256": "ea5232a56b013346a3db7d323b27170b62f41a43e1f9bda894eb49f07e06f7ed"
+            },
+            {
+              "path": "fxmanifest.lua",
+              "sha256": "0f2806c226785b503ee0f1fab124c55fe781ad1d68c8656a1c7cfdaa9d401479"
+            },
+            {
+              "path": "html/mod.css",
+              "sha256": "da2481357afdd8b649b8520a12d665e370a1f14bb6e3c8dcfabdb24ed9b8014a"
+            },
+            {
+              "path": "img/ico_1.png",
+              "sha256": "9c852bb071709c8c50143534a3f0895236b5dd1cee3b5754186b7ea5199f4890"
+            },
+            {
+              "path": "img/ico_2.png",
+              "sha256": "c923411cd71cad0a284f21018d589f85103e79fc09a29bd621db55663626a771"
+            },
+            {
+              "path": "img/ico_3.png",
+              "sha256": "5317a45ebdc0642a4cef57e7b1f72c348c8f9257db414c4f9b18cd81929bdf64"
+            },
+            {
+              "path": "img/ico_4.png",
+              "sha256": "29d96e5097ca914f9e6fb8f2c9383dda91ce8a2b52e1d681029183f5e7af8a2c"
+            },
+            {
+              "path": "lib/cl_bricks.lua",
+              "sha256": "2b8b55eb059aae8d51b7d9fe8a6264174c9156e6ebe9ba998165086087136bd4"
+            },
+            {
+              "path": "lib/cl_demo.lua",
+              "sha256": "00e02ecdcdf629411cfdbbe780e993eec6cd72b663b9de7052c34c175fc94d4d"
+            },
+            {
+              "path": "lib/cl_ready.lua",
+              "sha256": "ef9bd4698240643ffefc8374dc394ca25c988d2851c6ea613f43be31c850b3cb"
+            },
+            {
+              "path": "lib/nui/hud.css",
+              "sha256": "8dddfe6c6a3df9be201f6ff899bef6543900ce732f08fd84851fc7a99600199a"
+            },
+            {
+              "path": "lib/nui/hud.html",
+              "sha256": "c50fc0bd7788e8149f83dbfb3edaf77ae2c623cc741d112b5b694b975ea6a968"
+            },
+            {
+              "path": "lib/sh_bricks.lua",
+              "sha256": "c84f8853c8a45a51f589513c31f1d567d40b931a54e744419077a5ea72a43023"
+            },
+            {
+              "path": "lib/sv_bricks.lua",
+              "sha256": "5fc3c94d19b751f0dc08dfb6c8de49bfd2005ebe91f557fcd1dce0f5fb3eab34"
+            },
+            {
+              "path": "sfx/ace.ogg",
+              "sha256": "3bea41dd1063f4b3dd732c12ed339d7373ed26a63158f776eb7f38dd578673cc"
+            },
+            {
+              "path": "sfx/hit_tick.ogg",
+              "sha256": "ba07d7131eaa7d731bc3943ded073f022659db88a9a21534462f941edb7ef199"
+            },
+            {
+              "path": "sfx/round_win.ogg",
+              "sha256": "a174cc96211bd1395d14c117efce7cb9eb28e2f2a7eb5cfa2af11df5af7e933e"
+            },
+            {
+              "path": "sfx/spike_beep.ogg",
+              "sha256": "60c4d23bc87567e0eb5d0bfe69a432f76908298f4e12f559ad38319cfa576840"
+            },
+            {
+              "path": "sfx/spike_plant.ogg",
+              "sha256": "f349cb29f50affcb5e091825344eb4265328169d1a7ddfbe5ea6c3caa7161df0"
+            },
+            {
+              "path": "stream/sigf_spike.ydr",
+              "sha256": "969354282d5e1e54e7d5639cd9e6d75b512ed77d6bc52eb34ccba031f58d8e51"
+            },
+            {
+              "path": "stream/sigf_spike.ytyp",
+              "sha256": "b436bf27aa754acf8957dffe8ee06bdde24deca243503323ba9c09ed13303952"
+            },
+            {
+              "path": "stream/sigf_wall.ydr",
+              "sha256": "f8155dfcd5fbda899be7cd3aef8589f27e3a1b110464b258d8cf8ed7785ee32a"
+            },
+            {
+              "path": "stream/sigf_wall.ytyp",
+              "sha256": "564bd1922ff733eefce38cb85ce9b9a1b59091075ac2216f76d7223b47c00ef0"
+            }
+          ],
+          "url": "https://github.com/SIGFAI/gta5-valorant-takeover/releases/download/v1.0.0/gta5-valorant-takeover.zip",
+          "sha256": "7ed8719a5b9ed9cffa823c64003b34de6f15ddec947e28c3e078cc48e5aa7861",
+          "size": 2074402
+        }
+      ],
+      "runtime": "fivem"
+    }
+  ],
+  "launch": [
+    {
+      "game": "gta5",
+      "args": []
+    }
+  ],
+  "files": [
+    {
+      "name": "gta5-valorant-takeover.zip",
+      "url": "https://github.com/SIGFAI/gta5-valorant-takeover/releases/download/v1.0.0/gta5-valorant-takeover.zip",
+      "sha256": "7ed8719a5b9ed9cffa823c64003b34de6f15ddec947e28c3e078cc48e5aa7861",
+      "size": 2074402
+    }
+  ],
+  "source": {
+    "repo": "https://github.com/SIGFAI/gta5-valorant-takeover",
+    "license": "MIT"
+  },
+  "media": {
+    "clip": "https://sigf.ai/clips/2026-10-10-a1dd6338.mp4"
+  },
+  "built_by": {
+    "agent": "SIGF",
+    "model": "claude-opus-5.5"
+  },
+  "idea_by": "team",
+  "kit": {
+    "id": "gta5",
+    "status": "draft"
+  },
+  "built_at": "2026-10-10T12:09:14.659Z"
+}
