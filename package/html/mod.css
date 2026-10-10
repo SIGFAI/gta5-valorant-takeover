@@ -1,0 +1,41 @@
+:root { --navy:#0f1923; --red:#ff4655; --cyan:#3be8d0; --cream:#ece8e1; }
+#mod { position:fixed; inset:0; font-family:'Bebas Neue','Inter',sans-serif; color:var(--cream); pointer-events:none; }
+#v-top { position:absolute; top:14px; left:50%; transform:translateX(-50%); display:flex; align-items:stretch; height:58px; filter:drop-shadow(0 4px 8px #000a); }
+.v-team { width:150px; background:#0f1923e8; display:flex; align-items:center; justify-content:space-between; padding:0 12px; font-size:15px; letter-spacing:2px; }
+.v-team b { font-size:40px; font-weight:400; }
+.v-def { border-bottom:4px solid var(--cyan); clip-path:polygon(0 0,100% 0,92% 100%,0 100%); }
+.v-def b { color:var(--cyan); }
+.v-atk { border-bottom:4px solid var(--red); flex-direction:row-reverse; clip-path:polygon(8% 0,100% 0,100% 100%,0 100%); }
+.v-atk b { color:var(--red); }
+#v-clock { width:120px; background:#0f1923; text-align:center; font-size:40px; line-height:54px; border-bottom:4px solid var(--cream); }
+#v-clock.spike { color:var(--red); border-bottom-color:var(--red); animation:blink .5s infinite alternate; }
+#v-round { position:absolute; top:76px; left:50%; transform:translateX(-50%); font-size:16px; letter-spacing:4px; background:#0f1923cc; padding:2px 14px; }
+@keyframes blink { to { background:#3a1017; } }
+#v-feed { position:absolute; top:20px; right:20px; width:380px; display:flex; flex-direction:column; align-items:flex-end; gap:5px; }
+.v-kill { background:#0f1923ee; padding:4px 12px; font-size:22px; letter-spacing:1px; border-right:4px solid var(--red); display:flex; gap:10px; align-items:center; animation:slidein .25s; white-space:nowrap; }
+.v-kill.me { outline:2px solid var(--red); background:#2a1218ee; }
+.v-kill i { font-style:normal; font-size:14px; opacity:.75; }
+.v-kill .hs { color:var(--red); }
+.t-d { color:var(--cyan); } .t-a { color:var(--red); }
+@keyframes slidein { from { transform:translateX(120px); opacity:0 } }
+#v-map { position:absolute; top:16px; left:16px; width:200px; height:200px; background:#0f1923dd; border:2px solid #ece8e133; }
+#v-bannerbox { position:absolute; top:22%; left:0; right:0; display:flex; justify-content:center; }
+.v-banner { background:linear-gradient(90deg,#0f1923f2,#0f1923f2); border-top:3px solid var(--c,#ff4655); border-bottom:3px solid var(--c,#ff4655); padding:6px 90px 10px; text-align:center; animation:pop .35s cubic-bezier(.2,1.6,.4,1); transform:skewX(-8deg); min-width:520px; }
+.v-banner h1 { margin:0; font-weight:400; font-size:78px; letter-spacing:6px; color:var(--c,#ff4655); line-height:1; }
+.v-banner p { margin:0; font-size:26px; letter-spacing:5px; }
+@keyframes pop { from { transform:skewX(-8deg) scale(1.6); opacity:0 } }
+#v-bottom { position:absolute; bottom:22px; left:50%; transform:translateX(-50%); display:flex; gap:10px; align-items:flex-end; }
+.v-ab { width:70px; height:70px; background:#0f1923ee; border:2px solid #ece8e155; position:relative; display:flex; align-items:center; justify-content:center; transition:.15s; }
+.v-ab img { width:44px; height:44px; opacity:.9; }
+.v-ab span { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--cream); color:var(--navy); font-size:16px; padding:0 8px; }
+.v-ab em { position:absolute; bottom:-3px; right:3px; font-style:normal; font-size:13px; opacity:.8; }
+.v-ab.use { border-color:var(--cyan); box-shadow:0 0 18px var(--cyan); transform:scale(1.15); }
+.v-ab.cd img { opacity:.25; }
+#v-hp { background:#0f1923ee; padding:4px 18px; font-size:44px; margin-right:16px; border-left:4px solid var(--cyan); line-height:1.05; }
+#v-hp small { font-size:14px; display:block; letter-spacing:3px; opacity:.7; }
+#v-cr { background:#0f1923ee; padding:4px 18px; font-size:34px; margin-left:16px; color:#ffd36a; border-right:4px solid #ffd36a; line-height:1.2; }
+#v-cross { position:absolute; top:50%; left:50%; width:0; height:0; display:none; }
+#v-cross i { position:absolute; background:var(--cyan); box-shadow:0 0 0 1px #000; }
+#v-defuse { position:absolute; top:62%; left:50%; transform:translateX(-50%); width:320px; display:none; text-align:center; font-size:22px; letter-spacing:3px; }
+#v-defuse div { height:10px; background:#0f1923; border:1px solid var(--cream); margin-top:4px; }
+#v-defuse div i { display:block; height:100%; background:var(--cyan); width:0; }

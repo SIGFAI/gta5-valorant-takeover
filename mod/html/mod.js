@@ -1,0 +1,60 @@
+(function () {
+  const root = document.getElementById('mod');
+  root.innerHTML = `
+  <div id="v-top"><div class="v-team v-def"><span>DEFENDERS</span><b id="v-sd">0</b></div><div id="v-clock">1:40</div><div class="v-team v-atk"><span>ATTACKERS</span><b id="v-sa">0</b></div></div>
+  <div id="v-round">ROUND 1</div>
+  <canvas id="v-map" width="200" height="200"></canvas>
+  <div id="v-feed"></div>
+  <div id="v-bannerbox"></div>
+  <div id="v-cross"><i style="left:-14px;top:-1px;width:9px;height:2px"></i><i style="left:5px;top:-1px;width:9px;height:2px"></i><i style="left:-1px;top:-14px;width:2px;height:9px"></i><i style="left:-1px;top:5px;width:2px;height:9px"></i></div>
+  <div id="v-defuse"><span>DEFUSING</span><div><i></i></div></div>
+  <div id="v-bottom"><div id="v-hp"><small>HEALTH</small><span id="v-hpn">100</span></div>
+    <div class="v-ab" data-i="0"><span>C</span><img src="../../img/ico_3.png"><em>BARRIER</em></div>
+    <div class="v-ab" data-i="1"><span>Q</span><img src="../../img/ico_2.png"><em>FLAME</em></div>
+    <div class="v-ab" data-i="2"><span>E</span><img src="../../img/ico_4.png"><em>SMOKE</em></div>
+    <div class="v-ab" data-i="3"><span>X</span><img src="../../img/ico_1.png"><em>UPDRAFT</em></div>
+    <div id="v-cr">&curren; <span id="v-crn">800</span></div></div>`;
+  const $ = (id) => document.getElementById(id);
+  const map = $('v-map').getContext('2d');
+  const fmt = (s) => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+  function drawMap(m) {
+    map.clearRect(0, 0, 200, 200);
+    map.strokeStyle = '#ece8e122'; map.lineWidth = 1;
+    for (let i = 20; i < 200; i += 20) { map.beginPath(); map.moveTo(i, 0); map.lineTo(i, 200); map.moveTo(0, i); map.lineTo(200, i); map.stroke(); }
+    map.font = '26px "Bebas Neue"'; map.fillStyle = '#ece8e1aa'; map.textAlign = 'center';
+    (m.sites || []).forEach((s) => { map.strokeStyle = '#ece8e188'; map.strokeRect(s[0] - 15, s[1] - 15, 30, 30); map.fillText(s[2], s[0], s[1] + 9); });
+    if (m.spike) { map.fillStyle = '#ff4655'; map.globalAlpha = 0.5; map.beginPath(); map.arc(m.spike[0], m.spike[1], 8 + (Date.now() % 600) / 60, 0, 7); map.fill(); map.globalAlpha = 1; }
+    (m.pts || []).forEach((p) => {
+      map.fillStyle = p[2] === 2 ? '#ff4655' : '#3be8d0';
+      map.beginPath(); map.arc(p[0], p[1], p[2] === 3 ? 6 : 4.5, 0, 7); map.fill();
+      if (p[2] === 3) { map.strokeStyle = '#fff'; map.lineWidth = 2; map.stroke(); }
+    });
+  }
+  function banner(b) {
+    const el = document.createElement('div'); el.className = 'v-banner'; el.style.setProperty('--c', b.color || '#ff4655');
+    el.innerHTML = '<h1>' + b.t + '</h1>' + (b.sub ? '<p>' + b.sub + '</p>' : '');
+    $('v-bannerbox').innerHTML = ''; $('v-bannerbox').appendChild(el);
+    setTimeout(() => { if (el.parentNode) el.remove(); }, (b.sec || 3) * 1000);
+  }
+  function feed(f) {
+    const el = document.createElement('div'); el.className = 'v-kill' + (f.me ? ' me' : '');
+    el.innerHTML = '<span class="' + (f.kt === 1 ? 't-d' : 't-a') + '">' + f.k + '</span><i>' + f.w + '</i>' + (f.hs ? '<span class="hs">&#9678;</span>' : '') + '<span class="' + (f.vt === 1 ? 't-d' : 't-a') + '">' + f.v + '</span>';
+    const box = $('v-feed'); box.appendChild(el);
+    while (box.children.length > 5) box.firstChild.remove();
+    setTimeout(() => el.remove(), 6000);
+  }
+  window.addEventListener('sigfmod', (e) => {
+    const d = e.detail || {};
+    if (d.score) { $('v-sd').textContent = d.score[0]; $('v-sa').textContent = d.score[1]; }
+    if (d.round !== undefined) $('v-round').textContent = d.round;
+    if (d.clock !== undefined) { $('v-clock').textContent = d.spike ? 'SPIKE ' + Math.ceil(d.clock) : fmt(d.clock); $('v-clock').classList.toggle('spike', !!d.spike); }
+    if (d.banner) banner(d.banner);
+    if (d.feed) feed(d.feed);
+    if (d.map) drawMap(d.map);
+    if (d.hp !== undefined) $('v-hpn').textContent = d.hp;
+    if (d.credits !== undefined) $('v-crn').textContent = d.credits;
+    if (d.cross !== undefined) $('v-cross').style.display = d.cross ? 'block' : 'none';
+    if (d.use !== undefined) { const a = document.querySelectorAll('.v-ab')[d.use]; if (a) { a.classList.add('use'); setTimeout(() => a.classList.remove('use'), 700); } }
+    if (d.defuse !== undefined) { const f = $('v-defuse'); f.style.display = d.defuse >= 0 ? 'block' : 'none'; f.querySelector('i').style.width = Math.max(0, d.defuse * 100) + '%'; }
+  });
+})();

@@ -1,0 +1,1 @@
+Put this folder in your FiveM server's resources folder as sigf_mod, add "ensure sigf_mod" to server.cfg, and join. Rounds start by themselves. Press Q for flames, E for smoke, C for a barrier and X for an updraft.

@@ -1,0 +1,5 @@
+1. [x] Takeover: cyan/red team rings, nameplates, Valorant HUD (score, clock, minimap, abilities), GO banner.
+2. [x] The Spike falls from the sky onto a site, plants, beacon beam and red ring, countdown.
+3. [x] Phoenix flame wall burns enemies; the player shoots, kill feed shows a headshot.
+4. [x] Sage crystal barrier: solid cover wall appears in front of the player.
+5. [x] Spike detonates (big blast, SPIKE DETONATED banner); round 2 follows with a defuser.
